@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.views import APIView 
 from .models import Location
 from .serializer import Crud_Location_Serializer
@@ -11,7 +11,10 @@ class Crud_Location(APIView):
         return render(request, 'home.html', context)
     
     def post(self, request):
-        ...
+        serializer = Crud_Location_Serializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+        return redirect('home')
         
     def put(self, request):
         ...

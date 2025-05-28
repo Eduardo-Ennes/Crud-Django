@@ -20,5 +20,6 @@ from core.views import Crud_Location
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Crud_Location.as_view(), name='home')
+    path('', Crud_Location.as_view(), name='home'),
+    path('create/', Crud_Location.as_view(), name='create'),
 ]

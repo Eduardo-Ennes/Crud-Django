@@ -11,7 +11,7 @@
     <main class="position">
         <div class="container">
             <h2>Adicionar Destino</h2>
-            <form id="location-form">
+            <form id="location-form" action="{% url "create" %}" method="post">
                 {% csrf_token %}
                 <input type="text" name="country" placeholder="País" required>
                 <input type="text" name="city" required placeholder="Cidade">
