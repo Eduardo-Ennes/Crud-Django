@@ -4,7 +4,7 @@ from .models import Location
 class Crud_Location_Serializer(serializers.ModelSerializer):
     class Meta:
         model = Location
-        fields = ['id', 'country', 'city']
+        fields = ['id', 'country', 'city', 'created', 'update']
         
     def validate(self, data):
         country = data.get('country')
