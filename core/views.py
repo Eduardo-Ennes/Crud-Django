@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from rest_framework.views import APIView 
 from .models import Location
+from .serializer import Crud_Location_Serializer
 
 class Crud_Location(APIView):
     def get(self, request):
