@@ -7,8 +7,7 @@ class Crud_Location(APIView):
     
     def get(self, request):
         queryset = Location.objects.all().order_by('-pk')
-        serializer = Crud_Location_Serializer(queryset, many=True)
-        context = {'datas': serializer.data} 
+        context = {'datas': queryset} 
         return render(request, 'home.html', context)
     
     def post(self, request):
