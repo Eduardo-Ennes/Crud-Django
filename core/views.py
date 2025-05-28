@@ -4,9 +4,11 @@ from .models import Location
 from .serializer import Crud_Location_Serializer
 
 class Crud_Location(APIView):
+    
     def get(self, request):
-        data = Location.objects.all()
-        context = {'datas': data}
+        queryset = Location.objects.all().order_by('-pk')
+        serializer = Crud_Location_Serializer(queryset, many=True)
+        context = {'datas': serializer.data} 
         return render(request, 'home.html', context)
     
     def post(self, request):
