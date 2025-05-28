@@ -11,6 +11,18 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import os
+from dotenv import load_dotenv
+from django.core.exceptions import ImproperlyConfigured
+
+load_dotenv() 
+
+def get_secret(setting):
+    try:
+        return os.environ[setting]
+    except:
+        error_msg = f'Variável {setting} não configurada no ambiente!'
+        raise ImproperlyConfigured(error_msg)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,8 +87,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  
+        'NAME': get_secret('DATABASE_NAME'),        
+        'USER': get_secret('DATABASE_USER'),                         
+        'PASSWORD': get_secret('DATABASE_PASSWORD'),                 
+        'HOST': 'localhost',                 
+        'PORT': '3306',                       
     }
 }
 
