@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD de Localizações</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <main class="position">
+        <div class="container">
+            <h2>Adicionar Destino</h2>
+            <form id="location-form">
+                {% csrf_token %}
+                <input type="text" name="country" placeholder="País" required>
+                <input type="text" name="city" required placeholder="Cidade">
+                <button type="submit">Adicionar</button>
+            </form>
+            <h2>Lista de Destinos</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>País</th>
+                        <th>Cidade</th>
+                        <th>Criação</th>
+                        <th>Atualização</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="location-list">
+                        <td>PAIS</td>
+                        <td>CIDADE</td>
+                        <td>1000</td>
+                        <td>99999</td>
+                        <td>
+                            <div class="div-position">
+                                <div class="atualizar">&#x1F504</div>
+                                <div class="delete">#x274C</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
