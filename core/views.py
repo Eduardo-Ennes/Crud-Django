@@ -42,8 +42,3 @@ def update(request):
         print('VÁLIDO')
         serializer.save()
     return redirect('home')
-
-'''
-venv/scripts/activate
-python manage.py runserver
-'''
