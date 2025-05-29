@@ -17,7 +17,11 @@ def create(request):
     return redirect('home')
     
 def detail(request, id):
-    ...
+    data = Location.objects.filter(id=id).first()
+    if data:
+        context = {'data': data}
+        return render(request, 'details.html', context)
+    return redirect('home')
     
 def exclude(request, id):
     data = get_object_or_404(Location, id=id)
