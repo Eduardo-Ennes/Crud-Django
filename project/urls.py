@@ -16,10 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import Crud_Location
+from core.views import home, create, detail, exclude, update
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', Crud_Location.as_view(), name='home'),
-    path('create/', Crud_Location.as_view(), name='create'),
+    path('', home, name='home'),
+    path('create/', create, name='create'),
+    path('datail/<int:id>/', detail, name='detail'),
+    path('exclude/<int:id>/', exclude, name='exclude'),
+    path('update/', update, name='update'),
 ]

@@ -37,8 +37,8 @@
                             <td>{{c.update|date:"d/m/Y H:i"}}</td>
                             <td>
                                 <div class="div-position">
-                                    <div class="atualizar">&#x1F504</div>
-                                    <div class="delete">&#x274C</div>
+                                    <div class="atualizar"> <a href="{% url 'detail' c.id %}">&#x1F504</a></div>
+                                    <div class="delete"><a href="{% url 'exclude' c.id %}">&#x274C</a></div>
                                 </div>
                             </td>
                         </tr>
