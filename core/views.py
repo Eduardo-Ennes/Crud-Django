@@ -29,4 +29,10 @@ def exclude(request, id):
     return redirect('home')
 
 def update(request):
-    ...
+    id = request.POST.get('id')
+    obj_location = get_object_or_404(Location, id=id)
+    data = {'country': request.POST.get('country'), 'city': request.POST.get('city')}
+    serializer = Crud_Location_Serializer(instance=obj_location, data=data)
+    if serializer.is_valid():
+        serializer.save()
+    return redirect('home')
