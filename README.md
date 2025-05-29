@@ -52,7 +52,7 @@ venv/scripts/activate
 ⚠️ Se o ambiente virtual não estiver ativo, os comandos que você executar usarão o Python e os pacotes do sistema operacional, e não os pacotes isolados do seu projeto.
 
 
-### 3°: Rodar os comando de instação das dependências
+### 3°: Executar os comandos de instalação das dependências
 ```bash
 pip install django mysqlclient djangorestframework
 ``` 
