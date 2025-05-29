@@ -11,8 +11,8 @@
     <form action="{% url 'update' %}" method="post">
         {% csrf_token %}
         <input type="hidden" name="id" value="{{data.id}}">
-        <input type="text" name="country" placeholder="{{data.country}}">
-        <input type="text" name="city" placeholder="{{data.city}}">
+        <input type="text" name="country" value="{{data.country}}">
+        <input type="text" name="city" value="{{data.city}}">
         <h3>{{data.created|date:"d/m/Y H:i"}}</h3>
         <h3>{{data.update|date:"d/m/Y H:i"}}</h3>
         <div class='position'>

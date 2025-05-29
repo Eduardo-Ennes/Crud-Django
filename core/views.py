@@ -10,10 +10,13 @@ def home(request):
     return render(request, 'home.html', context)
 
 def create(request):
-    data = {'country': request.POST.get('country'), 'city': request.POST.get('city')}
-    serializer = Crud_Location_Serializer(data=data)
-    if serializer.is_valid():
-        serializer.save()
+    country = request.POST.get('country')
+    city = request.POST.get('city')
+    if country is not None and city is not None:
+        data = {'country': request.POST.get('country'), 'city': request.POST.get('city')}
+        serializer = Crud_Location_Serializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
     return redirect('home')
     
 def detail(request, id):
@@ -31,8 +34,16 @@ def exclude(request, id):
 def update(request):
     id = request.POST.get('id')
     obj_location = get_object_or_404(Location, id=id)
+    print('****************************')
+    print(obj_location)
     data = {'country': request.POST.get('country'), 'city': request.POST.get('city')}
-    serializer = Crud_Location_Serializer(instance=obj_location, data=data)
+    serializer = Crud_Location_Serializer(instance=obj_location, data=data, partial=True)
     if serializer.is_valid():
+        print('VÁLIDO')
         serializer.save()
     return redirect('home')
+
+'''
+venv/scripts/activate
+python manage.py runserver
+'''
